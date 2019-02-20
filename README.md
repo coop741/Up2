@@ -12,6 +12,7 @@
   * React
   * MongoDB
   * Node.js/Express
+  * Redux
 * Running the Code
   * Clone this GitHub repository into a directory of your choice.
   ```git clone https://github.com/coop741/Up2.git```
