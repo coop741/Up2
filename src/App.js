@@ -11,14 +11,17 @@ import PostCreate from './components/PostCreate'
 class App extends Component {
   render() {
     return (
-      <Container>
+      <div>
         <NavBar />
-        <Search />
-        <PostCreate />
-        <PostContainer>
+        
+        <Container>
+          <Search />
+          <PostCreate />
+          <PostContainer>
             <Post />
-        </PostContainer>
-      </Container>
+          </PostContainer>
+        </Container>
+      </div>
     );
   }
 }
