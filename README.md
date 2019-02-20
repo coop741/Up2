@@ -1,10 +1,5 @@
 # Up2 Social Media Project
 
-![Mongo News Scraper](https://image.ibb.co/fRsrO0/Screenshot-from-2018-10-18-10-13-01.png)
-
-
-
-
 * Team Members
    * Avonlea Haymart
    * Muhammad Al Juburi
