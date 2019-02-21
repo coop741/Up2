@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
 
-import Container from './components/Container'
-import Post from './components/Post'
-import PostContainer from './components/PostContainer'
-import Search from './components/Search'
-import NavBar from './components/NavBar'
-import PostCreate from './components/PostCreate'
+// Components
+import Container from "./components/Container";
+import NavBar from "./components/NavBar";
+import Routes from "./components/Routes/Routes";
+// CSS
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <NavBar />
-        
         <Container>
-          <Search />
-          <PostCreate />
-          <PostContainer>
-            <Post first="Avonlea" last="Haymart" date="Todayish" title="I got a new dog" desc="He's chonky" image="https://i.kym-cdn.com/entries/icons/mobile/000/013/564/doge.jpg" value="10" hashtags="dog"/>
-            
-          </PostContainer>
+          <Routes />
         </Container>
-      </div>
+      </React.Fragment>
     );
   }
 }
