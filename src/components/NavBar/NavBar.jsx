@@ -11,9 +11,14 @@ class NavBar extends Component {
             <img src="./images/logo.png" alt="Logo" />
           </Link>
 
-          <Link className="btn btn-outline-success float-right" to="create">
-                    Create event
-                </Link>
+          <div className="float-right">
+          <Link className="btn btn-outline-success float-right ml-3" to="login">
+            Log In
+          </Link>
+          <Link className="btn btn-outline-success float-right ml-3" to="create">
+            Create Event
+          </Link>
+          </div>
         </div>
       </nav>
     );
