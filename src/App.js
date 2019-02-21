@@ -18,7 +18,7 @@ class App extends Component {
           <Search />
           <PostCreate />
           <PostContainer>
-            <Post first="Avonlea" last="Haymart" date="Todayish" title="I got a new dog" desc="He's chonky" image="https://i.kym-cdn.com/entries/icons/mobile/000/013/564/doge.jpg" value="10" hashtags="dog"/>
+            <Post first="Avonlea" last="Haymart" date="Todayish" title="I got a new dog" desc="He's chonky" image="https://i.kym-cdn.com/entries/icons/mobile/000/013/564/doge.jpg" value="10" hashtags={["dog","is a","good boy"]}/>
             
           </PostContainer>
         </Container>
