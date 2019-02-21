@@ -13,16 +13,7 @@ class App extends Component {
       <React.Fragment>
         <NavBar />
         <Container>
-<<<<<<< HEAD
-          <Search />
-          <PostCreate />
-          <PostContainer>
-            <Post first="Avonlea" last="Haymart" date="Todayish" title="I got a new dog" desc="He's chonky" image="https://i.kym-cdn.com/entries/icons/mobile/000/013/564/doge.jpg" value="10" hashtags={["dog","is a","good boy"]}/>
-            
-          </PostContainer>
-=======
           <Routes />
->>>>>>> 129e1a2589a1d7605cfc01a1e2b85f3995924f89
         </Container>
       </React.Fragment>
     );

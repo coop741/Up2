@@ -1,3 +1,4 @@
 .post-container {
-    padding: 50px 0;
+    display: flex;
+    
 }

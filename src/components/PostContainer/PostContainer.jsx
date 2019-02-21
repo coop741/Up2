@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Post from "../Post/Post";
 import "./PostContainer.css";
 
@@ -7,10 +6,6 @@ class PostContainer extends Component {
   render() {
     return (
       <div className="post-container">
-        <Link className="btn btn-primary float-right" to="create">
-          Create event
-        </Link>
-        <div className="clearfix" />
 
         {/* ---Render Events--- */}
         <Post
@@ -21,7 +16,7 @@ class PostContainer extends Component {
           desc="He's chonky"
           image="https://i.kym-cdn.com/entries/icons/mobile/000/013/564/doge.jpg"
           value="10"
-          hashtags="dog"
+          hashtags={["dog","the goodest boy"]}
         />
       </div>
     );
