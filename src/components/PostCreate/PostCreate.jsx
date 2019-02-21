@@ -2,33 +2,6 @@ import React, { Component } from "react";
 import "./PostCreate.css";
 
 class PostCreate extends Component {
-  handleSubmit = e => {
-    // Preventing page reload
-    e.preventDefault();
-
-    // Getting Form Elements
-    // ------------------
-    const {
-      first_name,
-      last_name,
-      event_title,
-      event_value,
-      event_image
-    } = e.target;
-
-    // Form data object
-    // ----------------------
-    const obj = {
-      first_name: first_name.value,
-      last_name: last_name.value,
-      event_title: event_title.value,
-      event_value: event_value.value,
-      event_image: event_image.value
-    };
-
-    console.log(obj);
-  };
-
   render() {
     return (
       <div className="post-create">
@@ -40,7 +13,7 @@ class PostCreate extends Component {
           Create Event Form
           ===================
           */}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.props.handleCreate}>
           <div className="row">
             <div className="col-6">
               <div className="form-group">

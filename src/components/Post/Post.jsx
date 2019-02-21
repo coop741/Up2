@@ -3,7 +3,16 @@ import "./Post.css";
 
 class Post extends Component {
   render() {
-    const { first, last, title, image, desc, value, hashtags } = this.props;
+    const {
+      first,
+      last,
+      title,
+      image,
+      desc,
+      value,
+      hashtags,
+      date
+    } = this.props;
     return (
       // {/*  date, value, hashtags */}
 
@@ -14,16 +23,25 @@ class Post extends Component {
             <div className="card-body">
               <h5 className="card-title">
                 {title}
-                <span class="badge badge-secondary ml-2">{value}</span>
+                <span className="badge badge-secondary ml-2">{value}</span>
               </h5>
               <p className="card-text">{desc}</p>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item text-muted">
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item text-muted">
                 Written by {first} {last}
               </li>
-              <li class="list-group-item">{hashtags}</li>
-              <li class="list-group-item">Vestibulum at eros</li>
+              <li className="list-group-item text-muted">Posted {date}</li>
+
+              <li className="list-group-item">
+                <p>
+                  {hashtags.map(item => (
+                    <span key={item} className="badge badge-secondary">
+                      {item}
+                    </span>
+                  ))}
+                </p>
+              </li>
             </ul>
           </div>
         </div>
