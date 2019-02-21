@@ -33,7 +33,7 @@ class Post extends Component {
               <li className="list-group-item text-muted">Posted {date}</li>
 
               <li className="list-group-item">
-                <p>
+                <p className="tags-container">
                   {hashtags.map(item => (
                     <span key={item} className="badge badge-secondary tags">
                       {item}
