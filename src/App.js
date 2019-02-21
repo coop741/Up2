@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.css"
 
 // Components
 import Container from "./components/Container";

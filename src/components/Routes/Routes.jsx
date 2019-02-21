@@ -116,7 +116,6 @@ class Routes extends Component {
             />
             )}
         />
-
         <Route
           path="/"
           exact
