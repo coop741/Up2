@@ -94,7 +94,7 @@ class PostCreate extends Component {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-outline-success">
             Create Event
           </button>
         </form>

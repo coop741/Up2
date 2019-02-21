@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import Timeline from "../Timeline";
 import PostCreate from "../PostCreate";
+import Login from "../Login";
+import UserCreate from "../UserCreate";
 class Routes extends Component {
   state = {
     posts: [
@@ -101,18 +103,19 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
+          <Route path="/createUser" exact component={UserCreate} />
+          <Route path="/login" exact component={Login} />
         <Route
           path="/create"
           exact
           component={props => (
             <PostCreate
-              posts={this.state.posts}
-              handleCreate={this.handleCreatePost}
-              {...props}
+            posts={this.state.posts}
+            handleCreate={this.handleCreatePost}
+            {...props}
             />
-          )}
+            )}
         />
-
         <Route
           path="/"
           exact
