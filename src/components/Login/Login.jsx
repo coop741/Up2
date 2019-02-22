@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import "./Login.css";
+import axios from 'axios';
 
 class Login extends Component {
     handleSubmit = e => {
         // Preventing page reload
         e.preventDefault();
-
+        axios.get(`${process.env.REACT_APP_CONNECTION_STRING}/api/tags/`).then((err,res) => {
+                console.log(err, res)
+        })
         // Getting Form Elements
         // ------------------
         const {
