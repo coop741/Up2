@@ -78,7 +78,8 @@ class Routes extends Component {
       last_name,
       event_title,
       event_value,
-      event_image
+      event_image,
+      event_description
     } = e.target;
 
     // Form data object
@@ -88,10 +89,25 @@ class Routes extends Component {
       last: last_name.value,
       title: event_title.value,
       value: Number(event_value.value),
-      image: event_image.value
+      image: event_image.value,
+      description: event_description.value
     };
 
     console.log(post);
+
+    if (first_name.value) {
+      axios.post('http://localhost:5000/api/events', post)
+        .then(res => {
+          // if (res.data) {
+          //   this.props.getEvents();
+          //   this.setState({ first_name: "" })
+          // }
+          console.log('sent to server')
+        })
+        .catch(err => console.log(err))
+    } else {
+      console.log('input field required')
+    }
 
     // Copy old posts and add new post to it.
     // ------------------------
