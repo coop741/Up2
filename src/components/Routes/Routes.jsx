@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
+import axios from "axios";
 import Timeline from "../Timeline";
 import PostCreate from "../PostCreate";
 import Login from "../Login";
@@ -87,8 +88,7 @@ class Routes extends Component {
       last: last_name.value,
       title: event_title.value,
       value: Number(event_value.value),
-      image: event_image.value,
-      date: new Date().toDateString()
+      image: event_image.value
     };
 
     console.log(post);
@@ -103,18 +103,18 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-          <Route path="/createUser" exact component={UserCreate} />
-          <Route path="/login" exact component={Login} />
+        <Route path="/createUser" exact component={UserCreate} />
+        <Route path="/login" exact component={Login} />
         <Route
           path="/create"
           exact
           component={props => (
             <PostCreate
-            posts={this.state.posts}
-            handleCreate={this.handleCreatePost}
-            {...props}
+              posts={this.state.posts}
+              handleCreate={this.handleCreatePost}
+              {...props}
             />
-            )}
+          )}
         />
         <Route
           path="/"

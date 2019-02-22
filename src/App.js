@@ -8,6 +8,7 @@ import Routes from "./components/Routes/Routes";
 
 class App extends Component {
   render() {
+    console.log(process.env.REACT_APP_API);
     return (
       <React.Fragment>
         <NavBar />
