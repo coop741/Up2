@@ -1,0 +1,35 @@
+{
+  "Events": {
+    "01": {
+      "First Name": "Tyler",
+      "Last Name": "$",
+      "Date": "02/29/2020",
+      "Title": "First day at school!",
+      "Description": "Showed off my cool new lunchbox to the class",
+      "Image": "./images/img1.jpg",
+      "Value": 8,
+      "Hashtag": "Education"
+    },
+    "02": {
+      "First Name": "Stan",
+      "Last Name": "Marsh",
+      "Date": "01/28/2016",
+      "Title": "Birthday",
+      "Description": "Celebrated my 30th birthday today! Tried indoor skydiving!",
+      "Image": "./images/img2.jpg",
+      "Value": 10,
+      "Hashtags": "Hashtags[9]"
+    }
+  },
+  "Hashtags": [
+    { "01": "Work" },
+    { "02": "Education" },
+    { "03": "Relationship" },
+    { "04": "Home & Living" },
+    { "05": "Family" },
+    { "06": "Travel" },
+    { "07": "Interests" },
+    { "08": "Health & Wellness" },
+    { "09": "Milestones & Achievements" }
+  ]
+}
