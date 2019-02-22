@@ -3,7 +3,7 @@ import { shallow } from '../../../enzyme';
 
 import Login from './Login';
 
-// describe('hashtag tests', () => {
+describe('hashtag tests', () => {
 
 //   it('renders hashtag items', () => {
 //     const items = ['one', 'two', 'three'];
@@ -14,7 +14,7 @@ import Login from './Login';
 //   });
 // });
 
-describe('User signin', () => {
+
     // it('should fail if no credentials are provided', () => {
     //     const fakeEvent = { preventDefault: () => console.log('preventDefault') };
     //     const loginComponent = shallow(<Login />);

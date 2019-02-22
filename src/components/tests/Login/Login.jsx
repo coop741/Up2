@@ -1,26 +1,33 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 class Login extends Component {
-    // handleSubmit = e => {
-    //     // Preventing page reload
-    //     e.preventDefault();
+    handleSubmit = e => {
+        // Preventing page reload
+        e.preventDefault();
+        axios.get({
+            url:`${process.env.REACT.APP.CONNECTION_STRING}/api/tags`,
+            method:'get'
+        }).then((err,res) => {
+                console.log(err, res)
+        })
 
-    //     // Getting Form Elements
-    //     // ------------------
-    //     const {
-    //         username,
-    //         password
-    //     } = e.target;
+        // Getting Form Elements
+        // ------------------
+        const {
+            username,
+            password
+        } = e.target;
 
-    //     // Form data object
-    //     // ----------------------
-    //     const obj = {
-    //         username: username.value,
-    //         password: password.value
-    //     };
+        // Form data object
+        // ----------------------
+        const obj = {
+            username: username.value,
+            password: password.value
+        };
 
-    //     console.log(obj);
-    // };
+        console.log(obj);
+    };
 
     render() {
         return (
@@ -36,7 +43,7 @@ class Login extends Component {
                 <div className="row">
                     <div className="col-4"></div>
                     <div className="col-4">
-                        <form  onSubmit={this.handleSubmit} action="submit" id="loginForm" className="center">
+                        <form  onSubmit={this.props.handleSubmit} action="submit" id="loginForm" className="center">
                             <div className="form-group">
                                 <label htmlFor="username">Username</label>
                                 <input
