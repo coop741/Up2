@@ -14,6 +14,7 @@ class Routes extends Component {
     axios
       .get(process.env.REACT_APP_API + "/api/events")
       .then(({ data: posts }) => {
+        console.log("posts", posts)
         this.setState({ posts });
       });
   }
