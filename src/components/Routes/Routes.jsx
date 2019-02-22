@@ -11,13 +11,17 @@ class Routes extends Component {
   };
 
   componentDidMount() {
+    this.reloadPosts();
+  }
+
+  reloadPosts = () => {
     axios
       .get(process.env.REACT_APP_API + "/api/events")
       .then(({ data: posts }) => {
-        console.log("posts", posts)
+        console.log("posts", posts);
         this.setState({ posts });
       });
-  }
+  };
 
   handleCreatePost = e => {
     // Preventing page reload
@@ -47,18 +51,17 @@ class Routes extends Component {
 
     console.log(post);
 
+    // error checking can be done here
     if (first_name.value) {
-      axios.post('http://localhost:5000/api/events', post)
+      axios
+        .post("http://localhost:5000/api/events", post)
         .then(res => {
-          // if (res.data) {
-          //   this.props.getEvents();
-          //   this.setState({ first_name: "" })
-          // }
-          console.log('sent to server')
+          console.log("sent to server");
+          this.reloadPosts();
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
     } else {
-      console.log('input field required')
+      console.log("input field required");
     }
 
     // Copy old posts and add new post to it.
