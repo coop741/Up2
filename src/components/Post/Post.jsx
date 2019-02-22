@@ -3,16 +3,7 @@ import "./Post.css";
 
 class Post extends Component {
   render() {
-    const {
-      first,
-      last,
-      title,
-      image,
-      desc,
-      value,
-      hashtags,
-      date
-    } = this.props;
+    const { first, last, title, image, description, value, date } = this.props;
     return (
       // {/*  date, value, hashtags */}
 
@@ -25,7 +16,7 @@ class Post extends Component {
                 {title}
                 <span className="badge badge-secondary ml-2">{value}</span>
               </h5>
-              <p className="card-text">{desc}</p>
+              <p className="card-text">{description}</p>
             </div>
             <ul className="list-group list-group-flush">
               <li className="list-group-item text-muted">
@@ -33,7 +24,7 @@ class Post extends Component {
               </li>
               <li className="list-group-item text-muted">Posted {date}</li>
 
-              <li className="list-group-item">
+              {/* <li className="list-group-item">
                 <p>
                   {hashtags.map(item => (
                     <span key={item} className="badge badge-secondary">
@@ -41,7 +32,7 @@ class Post extends Component {
                     </span>
                   ))}
                 </p>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
