@@ -4,6 +4,8 @@
    * Avonlea Haymart
    * Muhammad Al Juburi
    * Trent Cooper
+   * Kyle Thomas
+   * Christian Ramos
 
 * Project Description
    * This is a life events social media project. Users are able to post their life events, with a scale of 1-10 of importance. More features include a search function, and a timeline to view other users' posts.
@@ -18,4 +20,5 @@
   ```git clone https://github.com/coop741/Up2.git```
   * At the root of the directory, run```npm install```.
   * Note: Currently this step is not required. Ensure MongoDB is running. ```mongo```
+  * This project requires the back end for full functionality. You can clone that here: ```https://github.com/avhaymart/Up2-BE```
   * Run ```npm start```.
