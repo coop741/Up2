@@ -1,10 +1,24 @@
 import React, { Component } from "react";
+import axios from 'axios'
 import "./UserCreate.css";
 
 class UserCreate extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            // 0 for not created, 2 for creating, 1 for created
+            created: 0,
+            failed: false
+        }
+    }
+
     handleSubmit = e => {
         // Preventing page reload
         e.preventDefault();
+
+        this.setState({
+            created: 2
+        })
 
         // Getting Form Elements
         // ------------------
@@ -27,6 +41,22 @@ class UserCreate extends Component {
         };
 
         console.log(obj);
+        axios({
+            url: `${process.env.REACT_APP_CONNECTION_STRING}/api/users`,
+            method: 'POST',
+            data: obj
+        }).then((res, err) => {
+            if (res === 200 || "OK") {
+                this.setState({
+                    created: 1
+                })
+            } else {
+                this.setState({
+                    created: 0,
+                    failed: true
+                })
+            }
+        })
     };
 
     render() {
@@ -44,7 +74,7 @@ class UserCreate extends Component {
                     <div className="col-4"></div>
                     <div className="col-4">
                         <form onSubmit={this.handleSubmit} className="center">
-                        <div className="form-group">
+                            <div className="form-group">
                                 <label htmlFor="first_name">First Name</label>
                                 <input required
                                     id="first_name"
@@ -94,10 +124,24 @@ class UserCreate extends Component {
                                     placeholder="Enter your password again"
                                 />
                             </div>
-
-                            <button type="submit" className="btn btn-outline-success col-12 mt-2">
-                                Create Account
+                            {this.state.failed === true &&
+                                <p>Create account failed. Make sure your passwords match.</p>
+                            }
+                            {this.state.created === 0 &&
+                                <button type="submit" className="btn btn-outline-success col-12 mt-2">
+                                    Create account
                             </button>
+                            }
+                            {this.state.created === 1 &&
+                                <button disabled type="submit" className="btn btn-outline-success col-12 mt-2">
+                                    Created!
+                            </button>
+                            }
+                            {this.state.created === 2 &&
+                                <button disabled type="submit" className="btn btn-outline-success col-12 mt-2">
+                                    Creating...
+                            </button>
+                            }
                         </form>
                         <p className="mt-3 text-center" >Already have an account? <a href="/login">Log in here!</a></p>
                     </div>
