@@ -2,33 +2,6 @@ import React, { Component } from "react";
 import "./PostCreate.css";
 
 class PostCreate extends Component {
-  handleSubmit = e => {
-    // Preventing page reload
-    e.preventDefault();
-
-    // Getting Form Elements
-    // ------------------
-    const {
-      first_name,
-      last_name,
-      event_title,
-      event_value,
-      event_image
-    } = e.target;
-
-    // Form data object
-    // ----------------------
-    const obj = {
-      first_name: first_name.value,
-      last_name: last_name.value,
-      event_title: event_title.value,
-      event_value: event_value.value,
-      event_image: event_image.value
-    };
-
-    console.log(obj);
-  };
-
   render() {
     return (
       <div className="post-create">
@@ -40,7 +13,7 @@ class PostCreate extends Component {
           Create Event Form
           ===================
           */}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.props.handleCreate}>
           <div className="row">
             <div className="col-6">
               <div className="form-group">
@@ -50,6 +23,7 @@ class PostCreate extends Component {
                   type="text"
                   name="first_name"
                   className="form-control"
+                  required
                   placeholder="Enter first name"
                 />
               </div>
@@ -62,6 +36,7 @@ class PostCreate extends Component {
                   type="text"
                   name="last_name"
                   className="form-control"
+                  required
                   placeholder="Enter last name"
                 />
               </div>
@@ -74,6 +49,7 @@ class PostCreate extends Component {
               name="event_title"
               type="text"
               className="form-control"
+              required
               placeholder="Enter a title"
             />
           </div>
@@ -85,6 +61,7 @@ class PostCreate extends Component {
               className="form-control"
               name="event_value"
               id="event_value"
+              required
             >
               <option value="1">1</option>
               <option value="2">2</option>
@@ -102,10 +79,11 @@ class PostCreate extends Component {
           <div className="form-group">
             <label htmlFor="event_image">Upload an image</label>
             <input
+              id="event_image"
               type="file"
               name="event_image"
               className="form-control-file"
-              id="event_image"
+              required
             />
           </div>
 
@@ -117,6 +95,7 @@ class PostCreate extends Component {
               className="form-control"
               cols="30"
               rows="10"
+              required
               placeholder="Describe the event"
             />
           </div>

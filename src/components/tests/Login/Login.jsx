@@ -1,21 +1,16 @@
 import React, { Component } from "react";
-import "./Login.css";
 import axios from 'axios';
 
 class Login extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            // 0 for not logged in, 2 for loggin in, 1 for logged in
-            login: 0,
-            failed: false
-        }
-    }
-
     handleSubmit = e => {
-        this.setState({login:2})
         // Preventing page reload
         e.preventDefault();
+        axios.get({
+            url:`${process.env.REACT.APP.CONNECTION_STRING}/api/tags`,
+            method:'get'
+        }).then((err,res) => {
+                console.log(err, res)
+        }).catch(err)
 
         // Getting Form Elements
         // ------------------
@@ -32,25 +27,6 @@ class Login extends Component {
         };
 
         console.log(obj);
-
-        axios({
-            url: `${process.env.REACT_APP_CONNECTION_STRING}/api/users`,
-            method: 'PUT',
-            data: obj
-        }).then((res, err) => {
-            if (err) {
-                this.setState({login:0})
-                return err
-            }
-            if (res === 200 || "OK") {
-                this.setState({login:1})
-            } else {
-                this.setState({
-                    login: 0,
-                    failed: true
-                })
-            }
-        })
     };
 
     render() {
@@ -67,7 +43,7 @@ class Login extends Component {
                 <div className="row">
                     <div className="col-4"></div>
                     <div className="col-4">
-                        <form onSubmit={this.handleSubmit} className="center">
+                        <form  onSubmit={this.props.handleSubmit} action="submit" id="loginForm" className="center">
                             <div className="form-group">
                                 <label htmlFor="username">Username</label>
                                 <input
@@ -89,20 +65,9 @@ class Login extends Component {
                                 />
                             </div>
 
-                            {this.state.login === 0 &&
-                                <button type="submit" className="btn btn-outline-success col-12 mt-2">
-                                    Log In
-                        </button>}
-
-                            {this.state.login === 1 &&
-                                <button type="submit" disabled className="btn btn-outline-success col-12 mt-2">
-                                    Success!
-                        </button>}
-
-                            {this.state.login === 2 &&
-                                <button type="submit" disabled className="btn btn-outline-success col-12 mt-2">
-                                    Logging in...
-                        </button>}
+                            <button type="submit" className="btn btn-outline-success col-12 mt-2">
+                                Log In
+                            </button>
                         </form>
                         <p className="mt-3 text-center" >Don't have an account? <a href="/createUser">Create one here!</a></p>
                     </div>
