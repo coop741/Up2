@@ -10,7 +10,7 @@ class Login extends Component {
             method:'get'
         }).then((err,res) => {
                 console.log(err, res)
-        })
+        }).catch(err)
 
         // Getting Form Elements
         // ------------------
