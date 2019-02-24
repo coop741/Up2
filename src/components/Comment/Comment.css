@@ -1,0 +1,12 @@
+.commentText {
+    border-bottom: solid thin black
+}
+
+.container {
+    border: solid thin black;
+    padding: 5px;
+}
+
+.date {
+    color: lightgrey
+}
