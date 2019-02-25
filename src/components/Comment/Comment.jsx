@@ -25,7 +25,7 @@ class Comment extends Component{
 
     render(){
         return(
-            <div className="container">
+            <div className="container-comment">
                 <p className="commentText">{this.state.comment}</p>
                 <br />
                 <p className="date">Posted: {this.state.postDate}</p>

@@ -11,6 +11,15 @@ class Login extends Component {
             failed: false
         }
     }
+    componentDidMount(){
+        const user = JSON.parse(sessionStorage.getItem('user'))
+        if (sessionStorage.getItem('user')){
+            console.log("user logged in")
+            console.log(user.username)
+        } else {
+            console.log("User isn't logged in")
+        }
+    }
 
     handleSubmit = e => {
         this.setState({login:2})
@@ -38,18 +47,19 @@ class Login extends Component {
             method: 'PUT',
             data: obj
         }).then((res, err) => {
+            console.log("response", res)
             if (err) {
                 this.setState({login:0})
                 return err
             }
-            if (res === 200 || "OK") {
-                this.setState({login:1})
-            } else {
-                this.setState({
-                    login: 0,
-                    failed: true
-                })
-            }
+                const data = {username:res.data[0].username, first_name:res.data[0].first_name, last_name:res.data[0].last_name}
+                sessionStorage.setItem('user', JSON.stringify(data))
+                this.setState({login:1, failed:false})
+                window.location.replace("/")
+
+        }).catch(err => { 
+            console.log(err)
+            this.setState({login:0, failed:true})
         })
     };
 
@@ -105,6 +115,9 @@ class Login extends Component {
                         </button>}
                         </form>
                         <p className="mt-3 text-center" >Don't have an account? <a href="/createUser">Create one here!</a></p>
+                        {this.state.failed &&
+                        <p className="text-danger text-center mt-3">Login failed. Make sure your username and password is correct.</p>
+                    }
                     </div>
                     <div className="col-4"></div>
                 </div>
