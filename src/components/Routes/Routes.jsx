@@ -16,7 +16,7 @@ class Routes extends Component {
 
   reloadPosts = () => {
     axios
-      .get(process.env.REACT_APP_API + "/api/events")
+      .get(process.env.REACT_APP_CONNECTION_STRING + "/api/events")
       .then(({ data: posts }) => {
         console.log("posts", posts);
         this.setState({ posts });
@@ -30,7 +30,6 @@ class Routes extends Component {
     // Getting Form Elements
     // ------------------
     const {
-      first_name,
       event_title,
       event_value,
       event_image,
@@ -40,8 +39,8 @@ class Routes extends Component {
     // Form data object
     // ----------------------
     const post = {
-      first: sessionStorage.getItem('user').first_name,
-      last: sessionStorage.getItem('user').last_name,
+      first: JSON.parse(sessionStorage.getItem('user')).first_name,
+      last: JSON.parse(sessionStorage.getItem('user')).last_name,
       title: event_title.value,
       value: Number(event_value.value),
       image: event_image.value,
@@ -51,7 +50,7 @@ class Routes extends Component {
     console.log(post);
 
     // error checking can be done here
-    if (first_name.value) {
+    if (post.first) {
       axios
         .post("http://localhost:5000/api/events", post)
         .then(res => {

@@ -51,7 +51,7 @@ class PostCreate extends Component {
 
             <div className="form-group col-3">
               <label htmlFor="event_value">Event importance</label>
-              <select className="form-control form-control-md">
+              <select id="event_value" name="event_value" className="form-control form-control-md">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
