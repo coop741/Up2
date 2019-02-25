@@ -1,9 +1,9 @@
 .commentText {
-    border-bottom: solid thin black
+    border-bottom: solid thin lightgrey
 }
 
 .container-comment {
-    border: solid thin black;
+    border: solid thin lightgray;
     padding: 5px;
 }
 
