@@ -31,7 +31,6 @@ class Routes extends Component {
     // ------------------
     const {
       first_name,
-      last_name,
       event_title,
       event_value,
       event_image,
@@ -41,8 +40,8 @@ class Routes extends Component {
     // Form data object
     // ----------------------
     const post = {
-      first: first_name.value,
-      last: last_name.value,
+      first: sessionStorage.getItem('user').first_name,
+      last: sessionStorage.getItem('user').last_name,
       title: event_title.value,
       value: Number(event_value.value),
       image: event_image.value,

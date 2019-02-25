@@ -8,7 +8,7 @@ import Routes from "./components/Routes/Routes";
 
 class App extends Component {
   state = {
-    count: 0
+    count: 0,
   }
 
   //Links the store to this component's state
@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(process.env.REACT_APP_API);
+    // console.log(process.env.REACT_APP_API);
     return (
       <React.Fragment>
         <NavBar />

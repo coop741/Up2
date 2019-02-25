@@ -1,3 +1,15 @@
 .post-create {
     
 }
+
+.align-right-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.align-right-bottom img {
+  height: 200px;
+  margin: 15px 0 0 0;
+}
