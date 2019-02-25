@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Button} from 'react-bootstrap';
 import './Comment.css';
 import API from '../../utils/API';
 
@@ -29,7 +30,7 @@ class Comment extends Component{
                 <p className="commentText">{this.state.comment}</p>
                 <br />
                 <p className="date">Posted: {this.state.postDate}</p>
-                <button className="btn btn-outline.danger btn-sm" onClick={this.deleteThisComment}>X</button>
+                <Button size="sm" variant="outline-danger" onClick={this.deleteThisComment}>X</Button>
             </div>
         )
     }
