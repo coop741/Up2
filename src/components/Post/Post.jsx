@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Comment from '../Comment';
+import Comment from "../Comment";
 import "./Post.css";
 
 class Post extends Component {
@@ -37,7 +37,11 @@ class Post extends Component {
             </ul>
           </div>
           <div>
-              {this.state.comments.length ? this.state.comments.map((singleComment) => <Comment id={singleComment.id}/>) : <h4>- - - - </h4>}
+            {this.state.comments.length ? (
+              this.state.comments.map(singleComment => <Comment id={singleComment.id} />)
+            ) : (
+              <h4>- - - - </h4>
+            )}
           </div>
         </div>
       </div>

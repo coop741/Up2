@@ -2,8 +2,28 @@ import React, { Component } from "react";
 import "./PostCreate.css";
 
 class PostCreate extends Component {
+  state = {
+    image: ""
+  };
 
   render() {
+    const myWidget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: process.env.REACT_APP_CLOUD_NAME,
+        uploadPreset: process.env.REACT_APP_CLOUD_PRESET
+      },
+      (error, result) => {
+        console.log(error, result);
+        if (result.event === "success") {
+          this.setState(
+            {
+              image: result.info.secure_url
+            },
+            console.log("Set image url to: ", result.info.secure_url)
+          );
+        }
+      }
+    );
     return (
       <div className="post-create">
         <h2>Create an event</h2>
@@ -57,13 +77,7 @@ class PostCreate extends Component {
 
           <div className="form-group">
             <label htmlFor="event_value">Event value</label>
-            <select
-              multiple
-              className="form-control"
-              name="event_value"
-              id="event_value"
-              required
-            >
+            <select multiple className="form-control" name="event_value" id="event_value" required>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -78,13 +92,23 @@ class PostCreate extends Component {
           </div>
 
           <div className="form-group">
-            <label htmlFor="event_image">Upload an image</label>
+            {/* <label htmlFor="event_image">Upload an image</label> */}
             <input
               id="event_image"
-              type="file"
+              type="text"
               name="event_image"
               className="form-control-file"
               required
+              hidden
+              value={this.state.image}
+            />
+            <button className="btn btn-outline-success" onClick={myWidget.open}>
+              Upload Image
+            </button>
+            <img
+              style={{ display: "block", height: "200px", margin: "15px 0" }}
+              src={this.state.image ? this.state.image : "https://via.placeholder.com/200"}
+              alt=""
             />
           </div>
 
