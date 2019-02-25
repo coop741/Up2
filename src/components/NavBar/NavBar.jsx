@@ -19,7 +19,7 @@ class NavBar extends Component {
   logout() {
     sessionStorage.removeItem('user')
     console.log("User logged out")
-    window.location.reload()
+    window.location.replace('/')
   }
 
   onMouseover(e) {
@@ -51,9 +51,11 @@ class NavBar extends Component {
           </Link>
 
           <div className="float-right">
-            <Link className="btn btn-outline-success float-right ml-3" to="create">
+            <Link className="btn btn-outline-success float-right ml-3" to={sessionStorage.getItem('user') ? "/create" : "/login"}>
               Create Event
           </Link>
+          {/* path={sessionStorage.getItem('user') ? "/create" : "/login"} */}
+
             {!this.state.login &&
               <Link className="btn btn-outline-success float-right ml-3" to="login">
                 Log In

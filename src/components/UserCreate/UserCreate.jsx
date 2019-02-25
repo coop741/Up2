@@ -8,7 +8,8 @@ class UserCreate extends Component {
         this.state = {
             // 0 for not created, 2 for creating, 1 for created
             created: 0,
-            failed: false
+            // 0 is for no failures, 1 is for mismatching passwords, and 2 is for username already exists
+            failed: 0
         }
     }
 
@@ -40,22 +41,40 @@ class UserCreate extends Component {
             confirm_password: confirm_password.value
         };
 
-        console.log(obj);
         axios({
             url: `${process.env.REACT_APP_CONNECTION_STRING}/api/users`,
             method: 'POST',
             data: obj
-        }).then((res, err) => {
+        }).then((res) => {
             if (res === 200 || "OK") {
-                this.setState({
-                    created: 1
-                })
-            } else {
-                this.setState({
-                    created: 0,
-                    failed: true
-                })
-            }
+
+                switch(res.data.fail) {
+                    case 0:
+                        this.setState({
+                            created:1,
+                            fail:0
+                        })
+                        break;
+                    case 1:
+                        this.setState({
+                            created:0,
+                            fail:1
+                        })
+                        break;
+                    case 2:
+                        this.setState({
+                            created:0,
+                            fail:2
+                        })
+                        break;
+                    default:
+                        this.setState({
+                            created:0
+                        })
+                }
+            } 
+        }).catch((err, data) => {
+            console.log(err, data)
         })
     };
 
@@ -143,6 +162,11 @@ class UserCreate extends Component {
                             </button>
                             }
                         </form>
+                        {this.state.fail === 1 &&
+                        <p className="mt-3 text-center text-danger">Passwords do not match.</p>}
+                        {this.state.fail === 2 &&
+                        <p className="mt-3 text-center text-danger">Username already exists.</p>
+                        }
                         <p className="mt-3 text-center" >Already have an account? <a href="/login">Log in here!</a></p>
                     </div>
                     <div className="col-4"></div>
