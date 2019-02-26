@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import {Modal, Button, Form} from 'react-bootstrap'
 import Comment from "../Comment";
 import "./Post.css";
+import API from '../../utils/API'
 
 class Post extends Component {
   constructor(){
     super()
     this.state = {
       comments: [],
-      show: false
+      postId: '',
+      show: false,
+      showComment: false
     }
 
     this.handleClose = this.handleClose.bind(this)
@@ -16,6 +19,22 @@ class Post extends Component {
     this.postComment = this.postComment.bind(this)
     this.showComment = this.showComment.bind(this)
     this.closeComment = this.closeComment.bind(this)
+  }
+
+  postComment(event) {
+    event.preventdefault()
+    this.setState({ showComment: false})
+    let post = {
+      comment: event.target.comment,
+      author: "Unknown"
+    }
+    console.log("Pushing to comments")
+    API.createComment(post).then((res) => {
+      let commentId = res.data._id
+      console.log('Comment ID is ' + commentId)
+      //Axios.put(`${process.env.REACT_APP_CONNECTION_STRING}/api/posts/${this.state.postId}`, commentId)
+    }
+    )
   }
 
   showComment() {
@@ -35,8 +54,8 @@ class Post extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.description)
-    this.setState({comments: this.props.comments})
+    console.log(this.props)
+    this.setState({comments: this.props.comments, postId: this.props.id})
   }
 
   render() {
@@ -106,25 +125,18 @@ class Post extends Component {
       </Modal.Footer>
       </Modal>
 
-      <Modal.Dialog size="sm">
-        <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
-        </Modal.Header>
-
+      <Modal show={this.state.showComment} size="md">
         <Modal.Body>
           <Form>
             <Form.Group controlId="comment">
               <Form.Label>Comment:</Form.Label>
-              <Form.Control as="texarea" placeholder="Comment Here" rows="4"/>
+              <Form.Control as="textarea" rows="3"/>
             </Form.Group>  
-            <Button variant="primary" type="submit">Save changes</Button>
+            <Button variant="primary" size="sm" type="submit" onClick={this.postComment}>Post Comment</Button>
           </Form>
+          <Button variant="secondary" size="sm" onClick={this.closeComment}>Close</Button>
         </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="secondary" onClick={this.closeComment}>Close</Button>
-        </Modal.Footer>
-      </Modal.Dialog>;
+      </Modal>
       </>
     );
   }
