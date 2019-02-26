@@ -1,3 +1,7 @@
 .timeline {
     
 }
+
+.btn:focus, .btn:active, .btn-outline-success:focus, .btn-outline-success:active {
+    outline: none;
+}

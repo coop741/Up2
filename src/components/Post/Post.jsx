@@ -45,9 +45,9 @@ class Post extends Component {
                   {title}
                   <span className="badge badge-secondary ml-2">{value}</span>
                   <br />
-                  <Button variant="primary" size="sm" onClick={this.handleShow}>Read More</Button>
                 </h5>
                 <p className="card-text">{description}</p>
+                  <Button variant="outline-success" size="sm" onClick={this.handleShow}>Read More</Button>
               </div>
               <ul className="list-group list-group-flush">
                 <li className="list-group-item text-muted">

@@ -6,8 +6,6 @@ class PostContainer extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2 className="text-center">Events</h2>
-        <hr />
         <div className="row">
           {/* ---Render Events--- */}
           {this.props.posts.map(

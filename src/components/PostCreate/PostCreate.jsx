@@ -26,7 +26,8 @@ class PostCreate extends Component {
     );
     return (
       <div className="post-create">
-        <h2>Create an event</h2>
+        <hr />
+        <h2>Create Event</h2>
         <hr />
 
         {/*
