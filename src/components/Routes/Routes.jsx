@@ -44,7 +44,8 @@ class Routes extends Component {
       title: event_title.value,
       value: Number(event_value.value),
       image: event_image.value,
-      description: event_description.value
+      description: event_description.value,
+      comments: []
     };
 
     console.log(post);

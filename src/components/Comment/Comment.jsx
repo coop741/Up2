@@ -27,8 +27,7 @@ class Comment extends Component{
     render(){
         return(
             <div className="container-comment">
-                <p className="commentText">{this.state.comment}</p>
-                <br />
+                <p >{this.state.comment}</p>
                 <p className="date">Posted: {this.state.postDate}</p>
                 <Button size="sm" variant="outline-danger" onClick={this.deleteThisComment}>X</Button>
             </div>
