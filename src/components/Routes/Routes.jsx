@@ -15,7 +15,7 @@ class Routes extends Component {
   }
 
   reloadPosts = () => {
-    axios.get(process.env.REACT_APP_CONNECTION_STRING + "/api/events").then(({ data: posts }) => {
+    axios.get(process.env.REACT_APP_API + "/api/events").then(({ data: posts }) => {
       console.log("posts", posts);
       this.setState({ posts });
     });

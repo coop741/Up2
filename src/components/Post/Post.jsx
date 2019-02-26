@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Modal, Button, Form} from 'react-bootstrap'
+import { Modal, Button, Form } from 'react-bootstrap'
 import Comment from "../Comment";
 import { connect } from "react-redux";
 import { setEventID } from "../../redux/store";
@@ -25,7 +25,7 @@ class Post extends Component {
 
   postComment(event) {
     event.preventdefault()
-    this.setState({ showComment: false})
+    this.setState({ showComment: false })
     let post = {
       comment: event.target.comment,
       author: "Unknown"
@@ -34,7 +34,7 @@ class Post extends Component {
     API.createComment(post).then((res) => {
       let commentId = res.data._id
       console.log('Comment ID is ' + commentId)
-      //Axios.put(`${process.env.REACT_APP_CONNECTION_STRING}/api/posts/${this.state.postId}`, commentId)
+      //Axios.put(`${process.env.REACT_APP_API}/api/posts/${this.state.postId}`, commentId)
     }
     )
   }
@@ -57,7 +57,7 @@ class Post extends Component {
 
   componentDidMount() {
     console.log(this.props)
-    this.setState({comments: this.props.comments, postId: this.props.id})
+    this.setState({ comments: this.props.comments, postId: this.props.id })
   }
 
   render() {
@@ -65,7 +65,8 @@ class Post extends Component {
     return (
       // {/*  date, value, hashtags */}
       <>
-        <div className="col-md-4">
+        {/* <div className="col-md-4"> */}
+        <div className="post-flex">
           <div className="post p-3">
             <div className="card">
               <img className="card-img-top" src={image} alt="post" />
@@ -76,7 +77,7 @@ class Post extends Component {
                   <br />
                 </h5>
                 <p className="card-text">{description}</p>
-                  <Button variant="outline-success" size="sm" onClick={this.handleShow}>Read More</Button>
+                <Button variant="outline-success" size="sm" onClick={this.handleShow}>Read More</Button>
               </div>
               <ul className="list-group list-group-flush">
                 <li className="list-group-item text-muted">
@@ -97,6 +98,7 @@ class Post extends Component {
             </div>
           </div>
         </div>
+        {/* </div> */}
 
         <Modal show={this.state.show} onHide={this.handleClose} size="lg">
           <Modal.Header closeButton>
@@ -112,8 +114,8 @@ class Post extends Component {
               {this.state.comments.length ? (
                 this.state.comments.map(singleComment => <Comment id={singleComment} />)
               ) : (
-                <p>- - - - </p>
-              )}
+                  <p>- - - - </p>
+                )}
             </div>
           </Modal.Body>
           <Modal.Footer>
@@ -123,24 +125,24 @@ class Post extends Component {
             <Button variant="secondary" onClick={this.handleClose}>
               Close
         </Button>
-        <Button variant="primary" onClick={this.showComment}>
-          Post Comment
+            <Button variant="primary" onClick={this.showComment}>
+              Post Comment
         </Button>
-      </Modal.Footer>
-      </Modal>
+          </Modal.Footer>
+        </Modal>
 
-      <Modal show={this.state.showComment} size="md">
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="comment">
-              <Form.Label>Comment:</Form.Label>
-              <Form.Control as="textarea" rows="3"/>
-            </Form.Group>  
-            <Button variant="primary" size="sm" type="submit" onClick={this.postComment}>Post Comment</Button>
-          </Form>
-          <Button variant="secondary" size="sm" onClick={this.closeComment}>Close</Button>
-        </Modal.Body>
-      </Modal>
+        <Modal show={this.state.showComment} size="md">
+          <Modal.Body>
+            <Form>
+              <Form.Group controlId="comment">
+                <Form.Label>Comment:</Form.Label>
+                <Form.Control as="textarea" rows="3" />
+              </Form.Group>
+              <Button variant="primary" size="sm" type="submit" onClick={this.postComment}>Post Comment</Button>
+            </Form>
+            <Button variant="secondary" size="sm" onClick={this.closeComment}>Close</Button>
+          </Modal.Body>
+        </Modal>
       </>
     );
   }
