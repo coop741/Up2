@@ -13,18 +13,18 @@ class App extends Component {
 
   //Links the store to this component's state
   //Methods below handle changes to the store's state
-  componentDidMount() {
-    this.props.store.subscribe(() => {
-      const { count } = this.props.store.getState();
-      this.setState({ count });
-    });
-  }
-  handleIncrement = () => {
-    this.props.store.dispatch({ type: INCREMENT });
-  };
-  handleDecrement = () => {
-    this.props.store.dispatch({ type: DECREMENT });
-  };
+  // componentDidMount() {
+  //   // this.props.store.subscribe(() => {
+  //   //   const { count } = this.props.store.getState();
+  //   //   this.setState({ count });
+  //   // });
+  // }
+  // handleIncrement = () => {
+  //   this.props.store.dispatch({ type: INCREMENT });
+  // };
+  // handleDecrement = () => {
+  //   this.props.store.dispatch({ type: DECREMENT });
+  // };
 
   render() {
     return (
