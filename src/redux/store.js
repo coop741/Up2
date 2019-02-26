@@ -1,25 +1,26 @@
-import {createStore} from 'redux';
-import * as actions from './actions';
+import { createStore } from "redux";
+import * as actions from "./actions";
 
 const defaultState = {
-    count: 0
-};
-
-const unknownAction = {
-    type: 'unknown'
+  postID: ""
 };
 
 //Defines how the action calls will change the store's state
-const reducer = (state = defaultState, action = unknownAction) => {
-    switch (action.type) {
-        case actions.INCREMENT:
-            return { ...state, count: state.count + 1};
-        case    actions.DECREMENT:
-            return { ...state, count: state.count - 1};
-        default:
-            return state;
-    }
+const reducer = (state = defaultState, action) => {
+  switch (action.type) {
+    case actions.SET_EVENT_ID:
+      return { ...state, eventID: action.payload };
+    default:
+      return state;
+  }
 };
+
+export function setEventID(_id) {
+  return {
+    type: actions.SET_EVENT_ID,
+    payload: _id
+  };
+}
 
 const store = createStore(reducer);
 

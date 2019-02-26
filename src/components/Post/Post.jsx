@@ -1,18 +1,28 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import { Modal, Button } from 'react-bootstrap'
+=======
+import { Modal, Button } from "react-bootstrap";
+>>>>>>> notifications
 import Comment from "../Comment";
+import { connect } from "react-redux";
+import { setEventID } from "../../redux/store";
 import "./Post.css";
 
 class Post extends Component {
   constructor() {
+<<<<<<< HEAD
     super()
+=======
+    super();
+>>>>>>> notifications
     this.state = {
       comments: [],
       show: false
-    }
+    };
 
-    this.handleClose = this.handleClose.bind(this)
-    this.handleShow = this.handleShow.bind(this)
+    this.handleClose = this.handleClose.bind(this);
+    this.handleShow = this.handleShow.bind(this);
   }
 
   handleClose() {
@@ -24,15 +34,21 @@ class Post extends Component {
   }
 
   componentDidMount() {
+<<<<<<< HEAD
     console.log(this.props.description)
     if (this.props.comments !== undefined) {
       console.log("Comments exist")
       this.setState({ comments: this.props.comments })
     } else {console.log("comments don't exist in db")}
+=======
+    console.log(this.props.description);
+    this.setState({ comments: this.props.comments });
+    // this.props.setEventID(this.props._id);
+>>>>>>> notifications
   }
 
   render() {
-    const { first, last, title, image, description, value, date } = this.props;
+    const { _id, first, last, title, image, description, value, date } = this.props;
     return (
       // {/*  date, value, hashtags */}
       <>
@@ -45,7 +61,13 @@ class Post extends Component {
                   {title}
                   <span className="badge badge-secondary ml-2">{value}</span>
                   <br />
+<<<<<<< HEAD
                   <Button variant="primary" size="sm" onClick={this.handleShow}>Read More</Button>
+=======
+                  <Button variant="primary" size="sm" onClick={this.handleShow}>
+                    Read More
+                  </Button>
+>>>>>>> notifications
                 </h5>
                 <p className="card-text">{description}</p>
               </div>
@@ -80,24 +102,23 @@ class Post extends Component {
           <Modal.Body>
             <p>{description}</p>
             <div>
-              {
-                undefined !== this.state.comments && this.state.comments.length !== 0 &&
-                  this.state.comments.length ? (
-                    this.state.comments.map(singleComment => <Comment id={singleComment} />)
-                  ) : (
-                    <p>- - - - </p>
-                  )
-              }
+              {this.state.comments.length ? (
+                this.state.comments.map(singleComment => <Comment id={singleComment} />)
+              ) : (
+                <p>- - - - </p>
+              )}
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <p>Written by: {first} {last} on {date}</p>
+            <p>
+              Written by: {first} {last} on {date}
+            </p>
             <Button variant="secondary" onClick={this.handleClose}>
               Close
-        </Button>
+            </Button>
             <Button variant="primary" onClick={this.handleClose}>
               Post Comment
-        </Button>
+            </Button>
           </Modal.Footer>
         </Modal>
       </>
@@ -105,4 +126,7 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default connect(
+  null,
+  { setEventID }
+)(Post);
