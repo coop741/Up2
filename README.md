@@ -22,6 +22,9 @@
   * Note: Currently this step is not required. Ensure MongoDB is running. ```mongo```
   * This project requires the back end for full functionality. You can clone that here: ```https://github.com/avhaymart/Up2-BE```
   * Create a .env in the root of the directory with the following contents:
-  ``` REACT_APP_API="http://localhost:5000"```
-  The backend for this project currently defaults on port 5000. Point this connection string to where your backend is running on.
+  ``` REACT_APP_API="http://localhost:5000"
+      REACT_APP_CLOUD_NAME=name
+      REACT_APP_CLOUD_PRESET=preset
+The backend for this project currently defaults on port 5000. Point this API to where your backend is running on.
+  * For the create post functionality to work correctly, you will have to create your own Cloudinary account and fill in the ```REACT_APP_CLOUD``` variables with your information.
   * Run ```npm start```.
