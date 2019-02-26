@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Modal, Button} from 'react-bootstrap'
+import {Modal, Button, Form} from 'react-bootstrap'
 import Comment from "../Comment";
 import "./Post.css";
 
@@ -13,6 +13,17 @@ class Post extends Component {
 
     this.handleClose = this.handleClose.bind(this)
     this.handleShow = this.handleShow.bind(this)
+    this.postComment = this.postComment.bind(this)
+    this.showComment = this.showComment.bind(this)
+    this.closeComment = this.closeComment.bind(this)
+  }
+
+  showComment() {
+    this.setState({ showComment: true })
+  }
+
+  closeComment() {
+    this.setState({ showComment: false })
   }
 
   handleClose() {
@@ -89,11 +100,31 @@ class Post extends Component {
         <Button variant="secondary" onClick={this.handleClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={this.handleClose}>
+        <Button variant="primary" onClick={this.showComment}>
           Post Comment
         </Button>
       </Modal.Footer>
       </Modal>
+
+      <Modal.Dialog size="sm">
+        <Modal.Header closeButton>
+          <Modal.Title>Modal title</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="comment">
+              <Form.Label>Comment:</Form.Label>
+              <Form.Control as="texarea" placeholder="Comment Here" rows="4"/>
+            </Form.Group>  
+            <Button variant="primary" type="submit">Save changes</Button>
+          </Form>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={this.closeComment}>Close</Button>
+        </Modal.Footer>
+      </Modal.Dialog>;
       </>
     );
   }
