@@ -9,10 +9,11 @@ class PostContainer extends Component {
         <div className="row">
           {/* ---Render Events--- */}
           {this.props.posts.map(
-            ({ first, last, date, title, description, image, value, hashtags, comments }, i) => (
+            ({ _id, first, last, date, title, description, image, value, hashtags, comments }, i) => (
               <Post
                 {...this.props}
                 key={i}
+                _id={_id}
                 first={first}
                 last={last}
                 date={date}
@@ -22,6 +23,7 @@ class PostContainer extends Component {
                 value={value}
                 hashtags={hashtags}
                 comments={comments}
+                id={_id}
               />
             )
           )}

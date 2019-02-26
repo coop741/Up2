@@ -1,34 +1,35 @@
-import React, {Component} from 'react';
-import {Button} from 'react-bootstrap';
-import './Comment.css';
-import API from '../../utils/API';
+import React, { Component } from "react";
+import { Button } from "react-bootstrap";
+import "./Comment.css";
+import API from "../../utils/API";
+import { connect } from "react-redux";
 
-class Comment extends Component{
-    constructor(props){
-        super(props);
-        this.state = {}
+class Comment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
 
-        this.deleteThisComment = this.deleteThisComment.bind(this);
-    }
+    this.deleteThisComment = this.deleteThisComment.bind(this);
+  }
 
-    componentDidMount(){
-        API.getComment(this.props.id).then(res => {
-            this.setState({
-                comment: res.data.comment,
-                postDate: res.data.postDate
-            })
-        })
-    }
+  componentDidMount() {
+    API.getComment(this.props.id).then(res => {
+      this.setState({
+        comment: res.data.comment,
+        postDate: res.data.postDate,
+        eventID: this.props.eventID
+      });
+    });
+  }
 
-    deleteThisComment(){
-        API.deleteComment(this.state.id)
-    }
+  deleteThisComment() {
+    API.deleteComment(this.state.id);
+  }
 
     render(){
         return(
             <div className="container-comment">
-                <p className="commentText">{this.state.comment}</p>
-                <br />
+                <p >{this.state.comment}</p>
                 <p className="date">Posted: {this.state.postDate}</p>
                 <Button size="sm" variant="outline-danger" onClick={this.deleteThisComment}>X</Button>
             </div>
@@ -36,4 +37,6 @@ class Comment extends Component{
     }
 }
 
-export default Comment;
+export default connect(state => {
+  return { eventID: state.eventID };
+})(Comment);
