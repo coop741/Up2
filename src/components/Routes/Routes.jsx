@@ -15,12 +15,10 @@ class Routes extends Component {
   }
 
   reloadPosts = () => {
-    axios
-      .get(process.env.REACT_APP_CONNECTION_STRING + "/api/events")
-      .then(({ data: posts }) => {
-        console.log("posts", posts);
-        this.setState({ posts });
-      });
+    axios.get(process.env.REACT_APP_CONNECTION_STRING + "/api/events").then(({ data: posts }) => {
+      console.log("posts", posts);
+      this.setState({ posts });
+    });
   };
 
   handleCreatePost = e => {
@@ -29,22 +27,18 @@ class Routes extends Component {
 
     // Getting Form Elements
     // ------------------
-    const {
-      event_title,
-      event_value,
-      event_image,
-      event_description
-    } = e.target;
+    const { event_title, event_value, event_image, event_description } = e.target;
 
     // Form data object
     // ----------------------
     const post = {
-      first: JSON.parse(sessionStorage.getItem('user')).first_name,
-      last: JSON.parse(sessionStorage.getItem('user')).last_name,
+      first: JSON.parse(sessionStorage.getItem("user")).first_name,
+      last: JSON.parse(sessionStorage.getItem("user")).last_name,
       title: event_title.value,
       value: Number(event_value.value),
       image: event_image.value,
-      description: event_description.value
+      description: event_description.value,
+      comments: []
     };
 
     console.log(post);
@@ -77,19 +71,9 @@ class Routes extends Component {
         <Route
           path="/create"
           exact
-          component={props => (
-            <PostCreate
-              posts={this.state.posts}
-              handleCreate={this.handleCreatePost}
-              {...props}
-            />
-          )}
+          component={props => <PostCreate posts={this.state.posts} handleCreate={this.handleCreatePost} {...props} />}
         />
-        <Route
-          path="/"
-          exact
-          component={props => <Timeline posts={this.state.posts} {...props} />}
-        />
+        <Route path="/" exact component={props => <Timeline posts={this.state.posts} {...props} />} />
       </Switch>
     );
   }
