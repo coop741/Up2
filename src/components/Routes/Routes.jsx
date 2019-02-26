@@ -46,7 +46,7 @@ class Routes extends Component {
     // error checking can be done here
     if (post.first) {
       axios
-        .post("http://localhost:5000/api/events", post)
+        .post(process.env.REACT_APP_API + "/api/events", post)
         .then(res => {
           console.log("sent to server");
           this.reloadPosts();
