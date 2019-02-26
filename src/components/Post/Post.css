@@ -11,11 +11,3 @@
 .post img {
   max-height: 500px;
 }
-
-.post {
-  width: 30%;
-}
-
-.post-flex {
-  display: flex;
-}
