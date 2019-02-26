@@ -24,6 +24,7 @@ class Post extends Component {
   }
 
   postComment(event) {
+    event.preventDefault()
     let post = {
       comment: event.target.elements.comment_form.value,
       author: "Unknown"
