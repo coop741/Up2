@@ -42,7 +42,7 @@ class UserCreate extends Component {
         };
 
         axios({
-            url: `${process.env.REACT_APP_CONNECTION_STRING}/api/users`,
+            url: `${process.env.REACT_APP_API}/api/users`,
             method: 'POST',
             data: obj
         }).then((res) => {

@@ -43,7 +43,7 @@ class Login extends Component {
         console.log(obj);
 
         axios({
-            url: `${process.env.REACT_APP_CONNECTION_STRING}/api/users`,
+            url: `${process.env.REACT_APP_API}/api/users`,
             method: 'PUT',
             data: obj
         }).then((res, err) => {
