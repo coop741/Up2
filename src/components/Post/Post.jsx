@@ -24,19 +24,17 @@ class Post extends Component {
   }
 
   postComment(event) {
-    event.preventdefault()
-    this.setState({ showComment: false})
     let post = {
-      comment: event.target.comment,
+      comment: event.target.elements.comment_form.value,
       author: "Unknown"
     }
     console.log("Pushing to comments")
     API.createComment(post).then((res) => {
-      let commentId = res.data._id
-      console.log('Comment ID is ' + commentId)
-      //Axios.put(`${process.env.REACT_APP_CONNECTION_STRING}/api/posts/${this.state.postId}`, commentId)
+      let commentId = {comments: res.data._id}
+      API.updatePost(this.state.postId, commentId)
     }
     )
+    this.setState({ showComment: false})
   }
 
   showComment() {
@@ -129,14 +127,14 @@ class Post extends Component {
       </Modal.Footer>
       </Modal>
 
-      <Modal show={this.state.showComment} size="md">
+      <Modal show={this.state.showComment} size="md" onSubmit={this.postComment}>
         <Modal.Body>
           <Form>
             <Form.Group controlId="comment">
               <Form.Label>Comment:</Form.Label>
-              <Form.Control as="textarea" rows="3"/>
+              <Form.Control name="comment_form" as="textarea" rows="3"/>
             </Form.Group>  
-            <Button variant="primary" size="sm" type="submit" onClick={this.postComment}>Post Comment</Button>
+            <Button variant="primary" size="sm" type="submit">Post Comment</Button>
           </Form>
           <Button variant="secondary" size="sm" onClick={this.closeComment}>Close</Button>
         </Modal.Body>
