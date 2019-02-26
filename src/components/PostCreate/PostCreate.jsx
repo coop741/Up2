@@ -95,7 +95,7 @@ class PostCreate extends Component {
                 Upload Image
             </button>
               <img
-                class="float-right"
+                className="float-right"
                 src={this.state.image ? this.state.image : "https://via.placeholder.com/200"}
                 alt=""
               />
