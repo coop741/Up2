@@ -25,6 +25,7 @@ class PostContainer extends Component {
                 value={value}
                 hashtags={hashtags}
                 comments={comments}
+                id={_id}
               />
             )
           )}

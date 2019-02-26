@@ -26,18 +26,15 @@ class Comment extends Component {
     API.deleteComment(this.state.id);
   }
 
-  render() {
-    return (
-      <div className="container-comment">
-        <p className="commentText">{this.state.comment}</p>
-        <br />
-        <p className="date">Posted: {this.state.postDate}</p>
-        <Button size="sm" variant="outline-danger" onClick={this.deleteThisComment}>
-          X
-        </Button>
-      </div>
-    );
-  }
+    render(){
+        return(
+            <div className="container-comment">
+                <p >{this.state.comment}</p>
+                <p className="date">Posted: {this.state.postDate}</p>
+                <Button size="sm" variant="outline-danger" onClick={this.deleteThisComment}>X</Button>
+            </div>
+        )
+    }
 }
 
 export default connect(state => {
