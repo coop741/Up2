@@ -24,7 +24,7 @@ class Post extends Component {
   }
 
   postComment(event) {
-    event.preventDefault()
+    // event.preventDefault() 
     let post = {
       comment: event.target.elements.comment_form.value,
       author: "Unknown"
@@ -119,10 +119,10 @@ class Post extends Component {
             <p>
               Written by: {first} {last} on {date}
             </p>
-            <Button variant="secondary" onClick={this.handleClose}>
+            <Button variant="danger" onClick={this.handleClose}>
               Close
         </Button>
-        <Button variant="primary" onClick={this.showComment}>
+        <Button variant="outline-success" onClick={this.showComment}>
           Post Comment
         </Button>
       </Modal.Footer>
@@ -135,9 +135,9 @@ class Post extends Component {
               <Form.Label>Comment:</Form.Label>
               <Form.Control name="comment_form" as="textarea" rows="3"/>
             </Form.Group>  
-            <Button variant="primary" size="sm" type="submit">Post Comment</Button>
+            <Button variant="outline-success" size="sm" type="submit">Post Comment</Button>
           </Form>
-          <Button variant="secondary" size="sm" onClick={this.closeComment}>Close</Button>
+          <Button variant="danger" size="sm" onClick={this.closeComment}>Close</Button>
         </Modal.Body>
       </Modal>
       </>
