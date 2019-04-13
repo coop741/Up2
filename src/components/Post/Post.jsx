@@ -60,7 +60,7 @@ class Post extends Component {
   }
 
   render() {
-    const { _id, first, last, title, image, description, value, date } = this.props;
+    const {first, last, title, image, description, value, date } = this.props;
     return (
       // {/*  date, value, hashtags */}
       <>

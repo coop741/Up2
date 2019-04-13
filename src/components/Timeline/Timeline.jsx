@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Timeline.css";
-import PostContainer from "../PostContainer/PostContainer";
+import PostContainer from "../PostContainer";
+import LoadingSpinner from "../LoadingSpinner";
 
 class Timeline extends Component {
 
@@ -40,49 +41,58 @@ class Timeline extends Component {
       default:
         return arr;
     }
-    this.setState({ posts: arr, active:by })
+    this.setState({ posts: arr, active: by })
   }
 
   render() {
     return (
-      <div className="timeline">
-        <hr />
-        <div className="row px-3 header">
-          {/* ------ */}
-          <h2>Events</h2>
-          <div className="row pr-3 header-right">
-            <p className="m-0 pr-3">Sort By:</p>
-            <div className="btn-group">
-
-              <button type="button"
-                onClick={(e) => { this.handleClick("newest", this.props.posts, e) }}
-                className={this.state.active === "newest" ? 'active btn btn-outline-success' : 'btn btn-outline-success'}>
-                Newest
-              </button>
-
-              <button type="button"
-                onClick={(e) => { this.handleClick("oldest", this.props.posts, e) }}
-                className={this.state.active === "oldest" ? 'active btn btn-outline-success' : 'btn btn-outline-success'}>
-                Oldest
-              </button>
-
-              <button type="button"
-                onClick={(e) => { this.handleClick("highVal", this.props.posts, e) }}
-                className={this.state.active === "highVal" ? 'active btn btn-outline-success' : 'btn btn-outline-success'}>
-                Highest Importance
-              </button>
-
-              <button type="button"
-                onClick={(e) => { this.handleClick("lowVal", this.props.posts, e) }}
-                className={this.state.active === "lowVal" ? 'active btn btn-outline-success' : 'btn btn-outline-success'}>
-                Lowest Importance
-              </button>
-            </div>
+      <div>
+        {this.props.posts[0] === undefined &&
+          <div className="loading-center mt-5">
+            <LoadingSpinner />
           </div>
-        </div>
-        <hr />
+        }
 
-        <PostContainer posts={this.state.posts} />
+        {this.props.posts[0] !== undefined &&
+          <div className="timeline">
+            <hr />
+            <div className="row px-3 header">
+              {/* ------ */}
+              <h2>Events</h2>
+              <div className="row pr-3 header-right">
+                <p className="m-0 pr-3">Sort By:</p>
+                <div className="btn-group">
+
+                  <button type="button"
+                    onClick={(e) => { this.handleClick("newest", this.props.posts, e) }}
+                    className={this.state.active === "newest" ? 'active btn btn-outline-success' : 'btn btn-outline-success'}>
+                    Newest
+              </button>
+
+                  <button type="button"
+                    onClick={(e) => { this.handleClick("oldest", this.props.posts, e) }}
+                    className={this.state.active === "oldest" ? 'active btn btn-outline-success' : 'btn btn-outline-success'}>
+                    Oldest
+              </button>
+
+                  <button type="button"
+                    onClick={(e) => { this.handleClick("highVal", this.props.posts, e) }}
+                    className={this.state.active === "highVal" ? 'active btn btn-outline-success' : 'btn btn-outline-success'}>
+                    Highest Importance
+              </button>
+
+                  <button type="button"
+                    onClick={(e) => { this.handleClick("lowVal", this.props.posts, e) }}
+                    className={this.state.active === "lowVal" ? 'active btn btn-outline-success' : 'btn btn-outline-success'}>
+                    Lowest Importance
+              </button>
+                </div>
+              </div>
+            </div>
+            <hr />
+
+            <PostContainer posts={this.state.posts} />
+          </div>}
       </div>
     );
   }
